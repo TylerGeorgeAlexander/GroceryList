@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Content = () => {
+  const [name, setName] = useState("Dave");
+  const [count, setCount] = useState(0);
+
   const handleNameChange = () => {
     const names = ["Laura", "Lauraverb", "Tycee", "Lauraverb", "Lauraverb"];
     const int = Math.floor(Math.random() * 5);
 
-    return names[int];
+    setName(names[int]);
   };
 
   const handleClick = () => {
-    console.log("You clicked it");
+    setCount(count+1);
+    console.log(count);
   };
 
-  const handleClick2 = (name) => {
-    console.log(`I know: ${name}`);
+  const handleClick2 = () => {
+    console.log(count);
   };
 
   const handleClick3 = (e) => {
@@ -22,10 +26,10 @@ const Content = () => {
 
   return (
     <main>
-      <p onDoubleClick={handleClick}>Hello {handleNameChange()}!</p>
-      <button onClick={handleClick}>Click it</button>
-      <button onClick={() => handleClick2('Laura')}>Click it</button>
-      <button onClick={(e) => handleClick3(e)}>Click it</button>
+      <p onDoubleClick={handleClick}>Hello {name}!</p>
+      <button onClick={handleNameChange}>Change Name</button>
+      <button onClick={handleClick}>Click it - handleClick</button>
+      <button onClick={handleClick2}>Click it console log count</button>
     </main>
   );
 };
